@@ -1,0 +1,633 @@
+[
+    {
+        "model": "banks.bank",
+        "pk": 1,
+        "fields": {
+            "name": "National Bank of America",
+            "type_bank": "PRIVATE",
+            "address": "123 Wall Street, New York, NY 10005",
+            "created_at": "2024-01-01T10:00:00Z",
+            "updated_at": "2024-01-01T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "banks.bank",
+        "pk": 2,
+        "fields": {
+            "name": "Federal Reserve Bank",
+            "type_bank": "GOVERNMENT",
+            "address": "20th Street and Constitution Avenue NW, Washington, DC",
+            "created_at": "2024-01-01T10:00:00Z",
+            "updated_at": "2024-01-01T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "banks.bank",
+        "pk": 3,
+        "fields": {
+            "name": "Pacific Trust Bank",
+            "type_bank": "PRIVATE",
+            "address": "500 California Street, San Francisco, CA 94104",
+            "created_at": "2024-01-01T10:00:00Z",
+            "updated_at": "2024-01-01T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "banks.bank",
+        "pk": 4,
+        "fields": {
+            "name": "State Development Bank",
+            "type_bank": "GOVERNMENT",
+            "address": "1000 Main Street, Austin, TX 78701",
+            "created_at": "2024-01-01T10:00:00Z",
+            "updated_at": "2024-01-01T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "banks.bank",
+        "pk": 5,
+        "fields": {
+            "name": "Metro Commercial Bank",
+            "type_bank": "PRIVATE",
+            "address": "200 Park Avenue, New York, NY 10166",
+            "created_at": "2024-01-01T10:00:00Z",
+            "updated_at": "2024-01-01T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "clients.client",
+        "pk": 1,
+        "fields": {
+            "full_name": "John Smith",
+            "birth_date": "1985-03-15",
+            "age": 39,
+            "nationality": "USA",
+            "address": "456 Oak Lane, Chicago, IL 60601",
+            "email": "john.smith@email.com",
+            "phone": "+1-312-555-0101",
+            "person_type": "INDIVIDUAL",
+            "bank": 1,
+            "created_at": "2024-01-15T10:00:00Z",
+            "updated_at": "2024-01-15T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "clients.client",
+        "pk": 2,
+        "fields": {
+            "full_name": "Maria Garcia",
+            "birth_date": "1990-07-22",
+            "age": 34,
+            "nationality": "Mexico",
+            "address": "789 Maple Drive, Miami, FL 33101",
+            "email": "maria.garcia@email.com",
+            "phone": "+1-305-555-0102",
+            "person_type": "INDIVIDUAL",
+            "bank": 2,
+            "created_at": "2024-01-16T10:00:00Z",
+            "updated_at": "2024-01-16T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "clients.client",
+        "pk": 3,
+        "fields": {
+            "full_name": "Tech Solutions Inc.",
+            "birth_date": "2010-01-10",
+            "age": 14,
+            "nationality": "USA",
+            "address": "100 Innovation Blvd, San Jose, CA 95110",
+            "email": "contact@techsolutions.com",
+            "phone": "+1-408-555-0103",
+            "person_type": "CORPORATE",
+            "bank": 3,
+            "created_at": "2024-01-17T10:00:00Z",
+            "updated_at": "2024-01-17T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "clients.client",
+        "pk": 4,
+        "fields": {
+            "full_name": "David Chen",
+            "birth_date": "1978-11-30",
+            "age": 46,
+            "nationality": "Canada",
+            "address": "321 Pine Street, Seattle, WA 98101",
+            "email": "david.chen@email.com",
+            "phone": "+1-206-555-0104",
+            "person_type": "INDIVIDUAL",
+            "bank": 1,
+            "created_at": "2024-01-18T10:00:00Z",
+            "updated_at": "2024-01-18T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "clients.client",
+        "pk": 5,
+        "fields": {
+            "full_name": "Global Trade LLC",
+            "birth_date": "2015-06-01",
+            "age": 9,
+            "nationality": "USA",
+            "address": "555 Commerce Way, Houston, TX 77001",
+            "email": "info@globaltrade.com",
+            "phone": "+1-713-555-0105",
+            "person_type": "CORPORATE",
+            "bank": 4,
+            "created_at": "2024-01-19T10:00:00Z",
+            "updated_at": "2024-01-19T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "clients.client",
+        "pk": 6,
+        "fields": {
+            "full_name": "Sarah Johnson",
+            "birth_date": "1992-04-18",
+            "age": 32,
+            "nationality": "UK",
+            "address": "888 Sunset Blvd, Los Angeles, CA 90028",
+            "email": "sarah.johnson@email.com",
+            "phone": "+1-323-555-0106",
+            "person_type": "INDIVIDUAL",
+            "bank": 5,
+            "created_at": "2024-01-20T10:00:00Z",
+            "updated_at": "2024-01-20T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "clients.client",
+        "pk": 7,
+        "fields": {
+            "full_name": "Robert Williams",
+            "birth_date": "1965-12-05",
+            "age": 59,
+            "nationality": "USA",
+            "address": "222 Broadway, New York, NY 10007",
+            "email": "robert.williams@email.com",
+            "phone": "+1-212-555-0107",
+            "person_type": "INDIVIDUAL",
+            "bank": 2,
+            "created_at": "2024-01-21T10:00:00Z",
+            "updated_at": "2024-01-21T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "clients.client",
+        "pk": 8,
+        "fields": {
+            "full_name": "Green Energy Corp",
+            "birth_date": "2018-09-15",
+            "age": 6,
+            "nationality": "USA",
+            "address": "777 Solar Drive, Phoenix, AZ 85001",
+            "email": "hello@greenenergy.com",
+            "phone": "+1-602-555-0108",
+            "person_type": "CORPORATE",
+            "bank": 3,
+            "created_at": "2024-01-22T10:00:00Z",
+            "updated_at": "2024-01-22T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "clients.client",
+        "pk": 9,
+        "fields": {
+            "full_name": "Emily Brown",
+            "birth_date": "1988-02-28",
+            "age": 36,
+            "nationality": "Australia",
+            "address": "444 Lake Shore Drive, Chicago, IL 60611",
+            "email": "emily.brown@email.com",
+            "phone": "+1-312-555-0109",
+            "person_type": "INDIVIDUAL",
+            "bank": 4,
+            "created_at": "2024-01-23T10:00:00Z",
+            "updated_at": "2024-01-23T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "clients.client",
+        "pk": 10,
+        "fields": {
+            "full_name": "Michael Lee",
+            "birth_date": "1995-08-12",
+            "age": 29,
+            "nationality": "South Korea",
+            "address": "999 Tech Park, Austin, TX 78702",
+            "email": "michael.lee@email.com",
+            "phone": "+1-512-555-0110",
+            "person_type": "INDIVIDUAL",
+            "bank": 5,
+            "created_at": "2024-01-24T10:00:00Z",
+            "updated_at": "2024-01-24T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 1,
+        "fields": {
+            "client": 1,
+            "description": "Home mortgage - 3 bedroom house",
+            "minimum_payment": "1500.00",
+            "maximum_payment": "3000.00",
+            "term_months": 360,
+            "registration_date": "2024-02-01T10:00:00Z",
+            "bank": 1,
+            "credit_type": "MORTGAGE",
+            "created_at": "2024-02-01T10:00:00Z",
+            "updated_at": "2024-02-01T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 2,
+        "fields": {
+            "client": 1,
+            "description": "Toyota Camry 2024 financing",
+            "minimum_payment": "450.00",
+            "maximum_payment": "600.00",
+            "term_months": 60,
+            "registration_date": "2024-02-02T10:00:00Z",
+            "bank": 1,
+            "credit_type": "AUTOMOTIVE",
+            "created_at": "2024-02-02T10:00:00Z",
+            "updated_at": "2024-02-02T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 3,
+        "fields": {
+            "client": 2,
+            "description": "Condo purchase - downtown Miami",
+            "minimum_payment": "2000.00",
+            "maximum_payment": "4000.00",
+            "term_months": 240,
+            "registration_date": "2024-02-03T10:00:00Z",
+            "bank": 2,
+            "credit_type": "MORTGAGE",
+            "created_at": "2024-02-03T10:00:00Z",
+            "updated_at": "2024-02-03T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 4,
+        "fields": {
+            "client": 2,
+            "description": "Honda CR-V 2023 loan",
+            "minimum_payment": "380.00",
+            "maximum_payment": "500.00",
+            "term_months": 48,
+            "registration_date": "2024-02-04T10:00:00Z",
+            "bank": 2,
+            "credit_type": "AUTOMOTIVE",
+            "created_at": "2024-02-04T10:00:00Z",
+            "updated_at": "2024-02-04T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 5,
+        "fields": {
+            "client": 2,
+            "description": "Small business expansion",
+            "minimum_payment": "800.00",
+            "maximum_payment": "1200.00",
+            "term_months": 36,
+            "registration_date": "2024-02-05T10:00:00Z",
+            "bank": 2,
+            "credit_type": "COMMERCIAL",
+            "created_at": "2024-02-05T10:00:00Z",
+            "updated_at": "2024-02-05T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 6,
+        "fields": {
+            "client": 3,
+            "description": "Office building acquisition",
+            "minimum_payment": "15000.00",
+            "maximum_payment": "25000.00",
+            "term_months": 180,
+            "registration_date": "2024-02-06T10:00:00Z",
+            "bank": 3,
+            "credit_type": "COMMERCIAL",
+            "created_at": "2024-02-06T10:00:00Z",
+            "updated_at": "2024-02-06T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 7,
+        "fields": {
+            "client": 3,
+            "description": "Fleet vehicles - 10 trucks",
+            "minimum_payment": "5000.00",
+            "maximum_payment": "8000.00",
+            "term_months": 60,
+            "registration_date": "2024-02-07T10:00:00Z",
+            "bank": 3,
+            "credit_type": "AUTOMOTIVE",
+            "created_at": "2024-02-07T10:00:00Z",
+            "updated_at": "2024-02-07T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 8,
+        "fields": {
+            "client": 4,
+            "description": "Vacation home - Lake Tahoe",
+            "minimum_payment": "2500.00",
+            "maximum_payment": "4500.00",
+            "term_months": 300,
+            "registration_date": "2024-02-08T10:00:00Z",
+            "bank": 1,
+            "credit_type": "MORTGAGE",
+            "created_at": "2024-02-08T10:00:00Z",
+            "updated_at": "2024-02-08T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 9,
+        "fields": {
+            "client": 4,
+            "description": "Tesla Model Y purchase",
+            "minimum_payment": "700.00",
+            "maximum_payment": "900.00",
+            "term_months": 72,
+            "registration_date": "2024-02-09T10:00:00Z",
+            "bank": 1,
+            "credit_type": "AUTOMOTIVE",
+            "created_at": "2024-02-09T10:00:00Z",
+            "updated_at": "2024-02-09T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 10,
+        "fields": {
+            "client": 5,
+            "description": "Warehouse expansion project",
+            "minimum_payment": "20000.00",
+            "maximum_payment": "35000.00",
+            "term_months": 120,
+            "registration_date": "2024-02-10T10:00:00Z",
+            "bank": 4,
+            "credit_type": "COMMERCIAL",
+            "created_at": "2024-02-10T10:00:00Z",
+            "updated_at": "2024-02-10T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 11,
+        "fields": {
+            "client": 5,
+            "description": "Delivery fleet financing",
+            "minimum_payment": "8000.00",
+            "maximum_payment": "12000.00",
+            "term_months": 48,
+            "registration_date": "2024-02-11T10:00:00Z",
+            "bank": 4,
+            "credit_type": "AUTOMOTIVE",
+            "created_at": "2024-02-11T10:00:00Z",
+            "updated_at": "2024-02-11T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 12,
+        "fields": {
+            "client": 5,
+            "description": "Equipment purchase - forklifts",
+            "minimum_payment": "3000.00",
+            "maximum_payment": "5000.00",
+            "term_months": 36,
+            "registration_date": "2024-02-12T10:00:00Z",
+            "bank": 4,
+            "credit_type": "COMMERCIAL",
+            "created_at": "2024-02-12T10:00:00Z",
+            "updated_at": "2024-02-12T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 13,
+        "fields": {
+            "client": 6,
+            "description": "Beach house mortgage",
+            "minimum_payment": "3500.00",
+            "maximum_payment": "5500.00",
+            "term_months": 360,
+            "registration_date": "2024-02-13T10:00:00Z",
+            "bank": 5,
+            "credit_type": "MORTGAGE",
+            "created_at": "2024-02-13T10:00:00Z",
+            "updated_at": "2024-02-13T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 14,
+        "fields": {
+            "client": 6,
+            "description": "BMW X5 2024 financing",
+            "minimum_payment": "850.00",
+            "maximum_payment": "1100.00",
+            "term_months": 60,
+            "registration_date": "2024-02-14T10:00:00Z",
+            "bank": 5,
+            "credit_type": "AUTOMOTIVE",
+            "created_at": "2024-02-14T10:00:00Z",
+            "updated_at": "2024-02-14T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 15,
+        "fields": {
+            "client": 7,
+            "description": "Investment property - duplex",
+            "minimum_payment": "1800.00",
+            "maximum_payment": "2800.00",
+            "term_months": 240,
+            "registration_date": "2024-02-15T10:00:00Z",
+            "bank": 2,
+            "credit_type": "MORTGAGE",
+            "created_at": "2024-02-15T10:00:00Z",
+            "updated_at": "2024-02-15T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 16,
+        "fields": {
+            "client": 7,
+            "description": "Mercedes-Benz E-Class",
+            "minimum_payment": "950.00",
+            "maximum_payment": "1200.00",
+            "term_months": 48,
+            "registration_date": "2024-02-16T10:00:00Z",
+            "bank": 2,
+            "credit_type": "AUTOMOTIVE",
+            "created_at": "2024-02-16T10:00:00Z",
+            "updated_at": "2024-02-16T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 17,
+        "fields": {
+            "client": 8,
+            "description": "Solar panel manufacturing plant",
+            "minimum_payment": "50000.00",
+            "maximum_payment": "75000.00",
+            "term_months": 180,
+            "registration_date": "2024-02-17T10:00:00Z",
+            "bank": 3,
+            "credit_type": "COMMERCIAL",
+            "created_at": "2024-02-17T10:00:00Z",
+            "updated_at": "2024-02-17T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 18,
+        "fields": {
+            "client": 8,
+            "description": "Electric vehicle fleet",
+            "minimum_payment": "12000.00",
+            "maximum_payment": "18000.00",
+            "term_months": 60,
+            "registration_date": "2024-02-18T10:00:00Z",
+            "bank": 3,
+            "credit_type": "AUTOMOTIVE",
+            "created_at": "2024-02-18T10:00:00Z",
+            "updated_at": "2024-02-18T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 19,
+        "fields": {
+            "client": 9,
+            "description": "Primary residence - townhouse",
+            "minimum_payment": "2200.00",
+            "maximum_payment": "3200.00",
+            "term_months": 300,
+            "registration_date": "2024-02-19T10:00:00Z",
+            "bank": 4,
+            "credit_type": "MORTGAGE",
+            "created_at": "2024-02-19T10:00:00Z",
+            "updated_at": "2024-02-19T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 20,
+        "fields": {
+            "client": 9,
+            "description": "Audi Q7 2024 lease buyout",
+            "minimum_payment": "780.00",
+            "maximum_payment": "980.00",
+            "term_months": 48,
+            "registration_date": "2024-02-20T10:00:00Z",
+            "bank": 4,
+            "credit_type": "AUTOMOTIVE",
+            "created_at": "2024-02-20T10:00:00Z",
+            "updated_at": "2024-02-20T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 21,
+        "fields": {
+            "client": 9,
+            "description": "Freelance business startup",
+            "minimum_payment": "500.00",
+            "maximum_payment": "800.00",
+            "term_months": 24,
+            "registration_date": "2024-02-21T10:00:00Z",
+            "bank": 4,
+            "credit_type": "COMMERCIAL",
+            "created_at": "2024-02-21T10:00:00Z",
+            "updated_at": "2024-02-21T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 22,
+        "fields": {
+            "client": 10,
+            "description": "First home purchase - condo",
+            "minimum_payment": "1200.00",
+            "maximum_payment": "1800.00",
+            "term_months": 360,
+            "registration_date": "2024-02-22T10:00:00Z",
+            "bank": 5,
+            "credit_type": "MORTGAGE",
+            "created_at": "2024-02-22T10:00:00Z",
+            "updated_at": "2024-02-22T10:00:00Z",
+            "deleted_at": null
+        }
+    },
+    {
+        "model": "credits.credit",
+        "pk": 23,
+        "fields": {
+            "client": 10,
+            "description": "Hyundai Ioniq 6 purchase",
+            "minimum_payment": "550.00",
+            "maximum_payment": "700.00",
+            "term_months": 60,
+            "registration_date": "2024-02-23T10:00:00Z",
+            "bank": 5,
+            "credit_type": "AUTOMOTIVE",
+            "created_at": "2024-02-23T10:00:00Z",
+            "updated_at": "2024-02-23T10:00:00Z",
+            "deleted_at": null
+        }
+    }
+]

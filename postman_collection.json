@@ -1,0 +1,584 @@
+{
+    "info": {
+        "name": "Your Credit API",
+        "description": "REST API for managing credits, clients, and banks",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "token",
+                "value": "{{access_token}}",
+                "type": "string"
+            }
+        ]
+    },
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000"
+        },
+        {
+            "key": "access_token",
+            "value": ""
+        },
+        {
+            "key": "refresh_token",
+            "value": ""
+        }
+    ],
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Login (Get JWT Token)",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var jsonData = pm.response.json();",
+                                    "pm.collectionVariables.set('access_token', jsonData.access);",
+                                    "pm.collectionVariables.set('refresh_token', jsonData.refresh);"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/login/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "login",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Refresh Token",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var jsonData = pm.response.json();",
+                                    "pm.collectionVariables.set('access_token', jsonData.access);"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"refresh\": \"{{refresh_token}}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/login/refresh/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "login",
+                                "refresh",
+                                ""
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Banks",
+            "item": [
+                {
+                    "name": "List Banks",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{base_url}}/api/bancos/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "bancos",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "List Banks (with filters)",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{base_url}}/api/bancos/?type_bank=PRIVATE&search=bank&ordering=-created_at",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "bancos",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "type_bank",
+                                    "value": "PRIVATE"
+                                },
+                                {
+                                    "key": "search",
+                                    "value": "bank"
+                                },
+                                {
+                                    "key": "ordering",
+                                    "value": "-created_at"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Bank",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{base_url}}/api/bancos/1/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "bancos",
+                                "1",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Create Bank",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"New Bank\",\n    \"type_bank\": \"PRIVATE\",\n    \"address\": \"123 Main Street\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/bancos/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "bancos",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Bank",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Updated Bank Name\",\n    \"type_bank\": \"GOVERNMENT\",\n    \"address\": \"456 New Address\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/bancos/1/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "bancos",
+                                "1",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Partial Update Bank",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Patched Bank Name\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/bancos/1/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "bancos",
+                                "1",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Bank",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "{{base_url}}/api/bancos/1/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "bancos",
+                                "1",
+                                ""
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Clients",
+            "item": [
+                {
+                    "name": "List Clients",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{base_url}}/api/clientes/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "clientes",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "List Clients (with filters)",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{base_url}}/api/clientes/?person_type=INDIVIDUAL&search=john&ordering=full_name",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "clientes",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "person_type",
+                                    "value": "INDIVIDUAL"
+                                },
+                                {
+                                    "key": "search",
+                                    "value": "john"
+                                },
+                                {
+                                    "key": "ordering",
+                                    "value": "full_name"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Client",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{base_url}}/api/clientes/1/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "clientes",
+                                "1",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Create Client",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"full_name\": \"Jane Doe\",\n    \"birth_date\": \"1990-05-15\",\n    \"age\": 34,\n    \"nationality\": \"USA\",\n    \"address\": \"789 Oak Street\",\n    \"email\": \"jane.doe@email.com\",\n    \"phone\": \"+1-555-0123\",\n    \"person_type\": \"INDIVIDUAL\",\n    \"bank\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/clientes/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "clientes",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Client",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"full_name\": \"Jane Doe Updated\",\n    \"birth_date\": \"1990-05-15\",\n    \"age\": 34,\n    \"nationality\": \"Canada\",\n    \"address\": \"New Address 123\",\n    \"email\": \"jane.updated@email.com\",\n    \"phone\": \"+1-555-9999\",\n    \"person_type\": \"INDIVIDUAL\",\n    \"bank\": 2\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/clientes/1/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "clientes",
+                                "1",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Client",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "{{base_url}}/api/clientes/1/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "clientes",
+                                "1",
+                                ""
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Credits",
+            "item": [
+                {
+                    "name": "List Credits",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{base_url}}/api/creditos/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "creditos",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "List Credits (with filters)",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{base_url}}/api/creditos/?credit_type=MORTGAGE&search=home&ordering=-registration_date",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "creditos",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "credit_type",
+                                    "value": "MORTGAGE"
+                                },
+                                {
+                                    "key": "search",
+                                    "value": "home"
+                                },
+                                {
+                                    "key": "ordering",
+                                    "value": "-registration_date"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Credit",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{base_url}}/api/creditos/1/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "creditos",
+                                "1",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Create Credit",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"client\": 1,\n    \"description\": \"New car loan\",\n    \"minimum_payment\": \"500.00\",\n    \"maximum_payment\": \"1000.00\",\n    \"term_months\": 48,\n    \"bank\": 1,\n    \"credit_type\": \"AUTOMOTIVE\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/creditos/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "creditos",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Credit",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"client\": 1,\n    \"description\": \"Updated loan description\",\n    \"minimum_payment\": \"600.00\",\n    \"maximum_payment\": \"1200.00\",\n    \"term_months\": 60,\n    \"bank\": 1,\n    \"credit_type\": \"MORTGAGE\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/creditos/1/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "creditos",
+                                "1",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Credit",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "{{base_url}}/api/creditos/1/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "creditos",
+                                "1",
+                                ""
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,6 +1,8 @@
 from datetime import date
 from rest_framework import serializers
 from apps.clients.models import Client
+from apps.credits.serializers import CreditWithBankSerializer
+from apps.banks.serializers import BankSerializer
 
 
 class ClientSerializer(serializers.ModelSerializer):
@@ -49,3 +51,18 @@ class ClientSerializer(serializers.ModelSerializer):
                 })
 
         return attrs
+
+
+class ClientDetailSerializer(serializers.ModelSerializer):
+    """Client serializer with nested credits and bank details for retrieve operations."""
+    credits = CreditWithBankSerializer(many=True, read_only=True)
+    bank = BankSerializer(read_only=True)
+
+    class Meta:
+        model = Client
+        fields = [
+            'id', 'full_name', 'birth_date', 'age', 'nationality',
+            'address', 'email', 'phone', 'person_type', 'bank',
+            'created_at', 'updated_at', 'credits'
+        ]
+        read_only_fields = ['id', 'created_at', 'updated_at']

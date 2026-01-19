@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from apps.credits.models import Credit
+from apps.banks.serializers import BankSerializer
 
 
 class CreditSerializer(serializers.ModelSerializer):
@@ -34,3 +35,16 @@ class CreditSerializer(serializers.ModelSerializer):
                 })
 
         return attrs
+
+
+class CreditWithBankSerializer(serializers.ModelSerializer):
+    """Credit serializer with nested bank details for read operations."""
+    bank = BankSerializer(read_only=True)
+
+    class Meta:
+        model = Credit
+        fields = [
+            'id', 'description', 'minimum_payment', 'maximum_payment',
+            'term_months', 'registration_date', 'bank', 'credit_type',
+            'created_at', 'updated_at'
+        ]
