@@ -192,9 +192,9 @@ SPECTACULAR_SETTINGS = {
 # Basic CSP for API-only project
 CSP_DEFAULT_SRC = ("'self'",)
 CSP_SCRIPT_SRC = ("'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net")
-CSP_STYLE_SRC = ("'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net")
-CSP_IMG_SRC = ("'self'", "data:", "https://cdn.jsdelivr.net")
-CSP_FONT_SRC = ("'self'", "https://cdn.jsdelivr.net")
+CSP_STYLE_SRC = ("'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net", "https://fonts.googleapis.com")
+CSP_IMG_SRC = ("'self'", "data:", "https://cdn.jsdelivr.net", "https:")
+CSP_FONT_SRC = ("'self'", "https://cdn.jsdelivr.net", "https://fonts.gstatic.com", "https://r2cdn.perplexity.ai", "data:")
 CSP_CONNECT_SRC = ("'self'",)
 CSP_FRAME_ANCESTORS = ("'none'",)
 
