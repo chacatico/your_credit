@@ -14,43 +14,47 @@ REST API for managing credits, clients, and banks built with Django REST Framewo
 
 ## Quick Start
 
+### Docker (Recommended)
+
+```bash
+# 1. Copy environment file
+cp .env.example .env
+
+# 2. Start services (PostgreSQL + API)
+docker-compose up --build
+
+# 3. Run migrations
+docker-compose exec api python manage.py migrate
+
+# 4. Load sample data
+docker-compose exec api python manage.py loaddata initial_data
+
+# 5. Create superuser
+docker-compose exec api python manage.py createsuperuser
+```
+
+API available at: http://localhost:8000
+
 ### Local Development
 
 ```bash
-# 1. Clone and navigate
-cd your_credit
-
-# 2. Create virtual environment
+# 1. Create virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate
 
-# 3. Install dependencies
+# 2. Install dependencies
 pip install -r requirements.txt
 
-# 4. Configure environment
+# 3. Configure environment
 cp .env.example .env
 # Edit .env with your database credentials
 
-# 5. Run migrations
+# 4. Run migrations and load data
 python manage.py migrate
+python manage.py loaddata initial_data
 
-# 6. Create superuser
-python manage.py createsuperuser
-
-# 7. Run server
+# 5. Run server
 python manage.py runserver
-```
-
-### Docker
-
-```bash
-# Development
-docker-compose up --build
-
-# Production
-cp .env.prod.example .env.prod
-# Edit .env.prod with production values
-docker-compose -f docker-compose.prod.yml up -d --build
 ```
 
 ## API Endpoints
@@ -73,7 +77,7 @@ All endpoints require JWT authentication.
 # Get token
 curl -X POST http://localhost:8000/api/login/ \
   -H "Content-Type: application/json" \
-  -d '{"username": "your_user", "password": "your_pass"}'
+  -d '{"username": "admin", "password": "admin"}'
 
 # Use token
 curl -H "Authorization: Bearer <access_token>" \
@@ -87,21 +91,30 @@ curl -H "Authorization: Bearer <access_token>" \
 - **Search**: `?search=john`
 - **Ordering**: `?ordering=-created_at`
 - **Soft Delete**: Records are not physically deleted
+- **Nested Data**: Client detail includes credits with bank info
+
+## Sample Data
+
+Load fixtures with sample data:
+
+```bash
+python manage.py loaddata initial_data
+```
+
+Includes: 5 banks, 10 clients, 23 credits
+
+## Postman Collection
+
+Import `postman_collection.json` into Postman for ready-to-use API requests.
 
 ## Testing
 
 ```bash
-# Install test dependencies
-pip install pytest pytest-django
-
 # Run all tests
 pytest
 
-# Verbose output
-pytest -v
-
-# Specific app
-pytest apps/banks/tests.py
+# With coverage
+pytest --cov=apps --cov-report=html
 ```
 
 ## Project Structure
@@ -112,13 +125,12 @@ your_credit/
 │   ├── banks/          # Bank management
 │   ├── clients/        # Client management
 │   ├── credits/        # Credit management
-│   └── core/           # Base models
+│   └── core/           # Base models & fixtures
 ├── your_credit/        # Project settings
-├── docker-compose.yml  # Dev Docker config
-├── docker-compose.prod.yml
+├── docker-compose.yml
 ├── Dockerfile
-├── requirements.txt
-└── pytest.ini
+├── postman_collection.json
+└── requirements.txt
 ```
 
 ## Environment Variables
@@ -130,8 +142,8 @@ your_credit/
 | `ALLOWED_HOSTS` | Allowed hosts | `localhost,127.0.0.1` |
 | `POSTGRES_DB` | Database name | `your_credit` |
 | `POSTGRES_USER` | Database user | `postgres` |
-| `POSTGRES_PASSWORD` | Database password | - |
-| `POSTGRES_HOST` | Database host | `localhost` |
+| `POSTGRES_PASSWORD` | Database password | `postgres` |
+| `POSTGRES_HOST` | Database host | `db` |
 | `POSTGRES_PORT` | Database port | `5432` |
 
 ## Security
